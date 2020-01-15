@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %} {{ single.title }} | DemoBlog{% endblock title %}
+  
+
+ {% block content %}  
+   	<a href="{% url 'index' %}">Go Back...</a>
+
+	<div class="row">
+	<div class="card p-4">
+		<h2 >{{single.title}}</h2>
+	<p>Posted by: {{single.author}},Posted in: {{single.category}}</p>
+	<img src="{{ STATIC_URL }}/{{ single.image }}/" alt="{{single.title}}">
+	<p class="mt-5 mr-5 ml-5" >{{single.content}}</p>
+	</div>
+	</div>
+
+<div class="row">
+
+<div class="col-6 p-3 btn btn-primary " >
+
+{% if prevpost %}
+	<a style="color:white;" href="{{ STATIC_URL }}/{{prevpost.id}}/">{{prevpost}}</a>
+	{% else %}
+	<a style="color:white;" href="{% url 'index' %}">Home</a>
+	{% endif %}
+	
+</div>
+	
+<div class="col-6 p-3 btn btn-primary " >
+{% if nextpost %}
+	<a style="color:white;" href="{{ STATIC_URL }}/{{nextpost.id}}/">{{nextpost}}</a>
+	{% else %}
+	<a style="color:white;" href="{% url 'index' %}">Home</a>
+{% endif %}
+
+
+</div>
+
+
+</div>
+
+
+	
+
+{% endblock content %}
